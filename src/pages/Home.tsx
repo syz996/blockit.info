@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Gamepad2, Trophy, BookOpen, Sparkles, Target, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-
+console.log(Link)
 function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
