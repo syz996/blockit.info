@@ -24,10 +24,15 @@ export function useGameLogic() {
 
   const { playSound } = useSound();
 
+  const calculateComboBonus = useCallback((combo: number) => {
+    return Math.floor(combo * 1.5) * 100;
+  }, []);
+
   const getRandomGem = useCallback(() => {
     const gems = Object.values(GEMS);
     const randomGem = gems[Math.floor(Math.random() * gems.length)];
     return {
+      id: Date.now(),
       color: randomGem.color,
       gemType: randomGem.type
     };
@@ -124,10 +129,8 @@ export function useGameLogic() {
 
     setBoard(prev => {
       const newBoard = prev.map(row => [...row]);
-      const randomGem = getRandomGem();
-      const newGem: GemType = {
-        id: Date.now(),
-        ...randomGem,
+      const newGem = {
+        ...getRandomGem(),
         special: getSpecialGem(),
       };
       newBoard[row][col] = newGem;
@@ -142,7 +145,8 @@ export function useGameLogic() {
         });
         
         const baseScore = SCORE_MULTIPLIER[Math.min(allMatches.length, 6) as keyof typeof SCORE_MULTIPLIER];
-        const newScore = baseScore * (combo + 1);
+        const comboBonus = calculateComboBonus(combo);
+        const newScore = baseScore + comboBonus;
         
         setScore(prev => prev + newScore);
         setCombo(prev => prev + 1);
@@ -151,6 +155,10 @@ export function useGameLogic() {
           playSound('combo');
         } else {
           playSound('match');
+        }
+
+        if (newGem.special) {
+          playSound('special');
         }
       } else {
         setCombo(0);
@@ -164,7 +172,7 @@ export function useGameLogic() {
 
       return newBoard;
     });
-  }, [isPlaying, gameOver, getRandomGem, checkMatches, combo, clearSpecialGem, getSpecialGem, playSound]);
+  }, [isPlaying, gameOver, getRandomGem, checkMatches, combo, clearSpecialGem, getSpecialGem, playSound, calculateComboBonus]);
 
   const removeGem = useCallback((row: number, col: number) => {
     if (!isPlaying || gameOver) return;
@@ -206,7 +214,7 @@ export function useGameLogic() {
     gameOver,
     togglePause,
     resetGame,
-    placeGem: placeGem,
-    removeGem: removeGem,
+    placeGem,
+    removeGem,
   };
 }

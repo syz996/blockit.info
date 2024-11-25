@@ -33,8 +33,21 @@ function GameBoard({ board, onGemPlace, onGemRemove, isPlaying }: GameBoardProps
     }
   };
 
+  // Touch event handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="aspect-square bg-black/20 backdrop-blur-sm rounded-lg p-4">
+    <div 
+      className="aspect-square bg-black/20 backdrop-blur-sm rounded-lg p-4"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
       <div className="grid grid-cols-8 gap-1 h-full">
         <AnimatePresence>
           {board.map((row, rowIndex) =>

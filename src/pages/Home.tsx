@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Gamepad2, Trophy, BookOpen, Sparkles, Target, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-console.log(Link)
+
 function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -12,76 +12,52 @@ function Home() {
         className="text-center mb-16"
       >
         <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 mb-4">
-          Welcome to Block IT
+          Block IT - Innovative Puzzle Game with Special Powers
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-          Challenge yourself in this addictive puzzle game where strategy meets speed.
-          Match blocks, trigger special effects, and climb the global leaderboard!
+          Experience an innovative puzzle game where strategy meets excitement. Match gems, trigger special powers, and compete globally!
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
+      <section aria-label="Game Features" className="grid md:grid-cols-3 gap-8 mb-16">
         <FeatureCard
-          icon={<Gamepad2 className="w-12 h-12" />}
-          title="Play Now"
-          description="Jump into action with special blocks and power-ups"
-          link="/game"
-          linkText="Start Game"
-          delay={0.1}
+          icon={<Sparkles className="w-12 h-12" />}
+          title="Special Gems"
+          description="Unlock powerful special gems like Rainbow, Bomb, and Star to create spectacular chain reactions!"
         />
         <FeatureCard
           icon={<Trophy className="w-12 h-12" />}
-          title="Leaderboard"
-          description="Compete globally and showcase your skills"
-          link="/leaderboard"
-          linkText="View Rankings"
-          delay={0.2}
+          title="Global Competition"
+          description="Compete with players worldwide and climb the leaderboard with your strategic gameplay!"
         />
         <FeatureCard
-          icon={<BookOpen className="w-12 h-12" />}
-          title="Learn to Play"
-          description="Master special blocks and advanced strategies"
-          link="/tutorial"
-          linkText="View Tutorial"
-          delay={0.3}
+          icon={<Target className="w-12 h-12" />}
+          title="Chain Reactions"
+          description="Create amazing chain reactions to multiply your score and unlock achievements!"
         />
-      </div>
+      </section>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-16">
-        <SpecialBlockCard
-          icon={<Sparkles className="w-8 h-8" />}
-          title="Rainbow Block"
-          description="Matches with any color! Create epic chain reactions"
-          color="from-purple-500 to-pink-500"
+      <section aria-label="Game Modes" className="grid md:grid-cols-2 gap-8 mb-16">
+        <GameModeCard
+          title="Classic Mode"
+          description="Match gems strategically to achieve the highest score possible. No time limit!"
+          icon={<Gamepad2 className="w-8 h-8" />}
+          link="/game"
+          buttonText="Play Now"
         />
-        <SpecialBlockCard
-          icon={<Target className="w-8 h-8" />}
-          title="Bomb Block"
-          description="Clears surrounding blocks for massive points"
-          color="from-red-500 to-orange-500"
-        />
-        <SpecialBlockCard
+        <GameModeCard
+          title="Challenge Mode"
+          description="Complete special missions and daily challenges to earn bonus rewards!"
           icon={<Zap className="w-8 h-8" />}
-          title="Star Block"
-          description="Clears entire rows and columns at once"
-          color="from-yellow-500 to-amber-500"
+          link="/game?mode=challenge"
+          buttonText="Start Challenge"
         />
-        <SpecialBlockCard
-          icon={<Trophy className="w-8 h-8" />}
-          title="Combo System"
-          description="Chain matches for multiplier bonuses"
-          color="from-green-500 to-emerald-500"
-        />
-      </div>
+      </section>
 
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="relative rounded-2xl overflow-hidden"
-      >
+      <section aria-label="Game Preview" className="relative rounded-2xl overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1550745165-9bc0b252726f"
-          alt="Gaming Setup"
+          alt="Immersive Gaming Experience"
           className="w-full h-[400px] object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-end">
@@ -96,71 +72,57 @@ function Home() {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </section>
     </div>
   );
 }
 
-function FeatureCard({
-  icon,
-  title,
-  description,
-  link,
-  linkText,
-  delay,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  link: string;
-  linkText: string;
-  delay: number;
-}) {
+function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
-      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors group"
+      whileHover={{ scale: 1.05 }}
+      className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors"
     >
-      <div className="text-purple-400 group-hover:scale-110 transform transition-transform duration-200 mb-4">
-        {icon}
-      </div>
+      <div className="text-purple-400 mb-4">{icon}</div>
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-300 mb-4">{description}</p>
-      <Link
-        to={link}
-        className="inline-block text-purple-400 hover:text-purple-300 font-semibold transition-colors group-hover:translate-x-2 transform duration-200"
-      >
-        {linkText} →
-      </Link>
-    </motion.div>
+      <p className="text-gray-300">{description}</p>
+    </motion.article>
   );
 }
 
-function SpecialBlockCard({
-  icon,
-  title,
-  description,
-  color,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  color: string;
+function GameModeCard({ 
+  title, 
+  description, 
+  icon, 
+  link, 
+  buttonText 
+}: { 
+  title: string; 
+  description: string; 
+  icon: React.ReactNode; 
+  link: string; 
+  buttonText: string;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.02 }}
-      className={`bg-gradient-to-r ${color} p-0.5 rounded-xl`}
+      className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-6 rounded-xl border border-white/10"
     >
-      <div className="bg-black/90 rounded-xl p-6 h-full">
-        <div className="text-white mb-4">{icon}</div>
-        <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-        <p className="text-gray-300 text-sm">{description}</p>
+      <div className="flex items-center gap-3 mb-4">
+        <div className="text-purple-400">{icon}</div>
+        <h3 className="text-xl font-bold text-white">{title}</h3>
       </div>
+      <p className="text-gray-300 mb-6">{description}</p>
+      <Link
+        to={link}
+        className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors"
+      >
+        {buttonText}
+      </Link>
     </motion.div>
   );
 }

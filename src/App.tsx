@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import SoundControl from './components/SoundControl';
 import Home from './pages/Home';
 import Game from './pages/Game';
 import Leaderboard from './pages/Leaderboard';
@@ -18,6 +19,7 @@ function App() {
         <Route path="/tutorial" element={<Tutorial />} />
         <Route path="/faq" element={<FAQ />} />
       </Routes>
+      <SoundControl />
     </div>
   );
 }
