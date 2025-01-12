@@ -1,14 +1,13 @@
-
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import SoundControl from './components/SoundControl';
-import Home from './pages/Home';
-import Game from './pages/Game';
-import Leaderboard from './pages/Leaderboard';
-import Tutorial from './pages/Tutorial';
-import FAQ from './pages/FAQ';
+import Navbar from '../components/Navbar';
+import SoundControl from '../components/SoundControl';
+import Home from '../pages/Home';
+import Game from '../pages/Game';
+import Leaderboard from '../pages/Leaderboard';
+import Tutorial from '../pages/Tutorial';
+import FAQ from '../pages/FAQ';
 
-function App() {
+function home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
       <Navbar />
@@ -24,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default home;
