@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "playGame": "Play Game",
+    "videos": "Videos",
+    "about": "About",
+    "faq": "FAQ",
+    "reviews": "Reviews"
+  },
+  "game": {
+    "playButton": "Play Game",
+    "fullscreen": "Fullscreen"
+  },
+  "about": {
+    "title": "About Gar-Type",
+    "description": "Gar-Type is a free pixel art shooter game developed by Lumpy, drawing inspiration from the mysterious \"Gar\" character. This sci-fi adventure combines humor with intense action as you defend Earth from the living planet Gar's invasion. Pilot humanity's secret prototype ship and become our last hope for survival."
+  },
+  "seo": {
+    "title": "Gar-Type - Free Pixel Art Shooter Game",
+    "description": "Play Gar-Type, a free pixel art shooter game with intense action and humor. Defend Earth from the living planet Gar's invasion in this sci-fi adventure.",
+    "keywords": "pixel art game, shooter game, sci-fi game, free online game, arcade game, space shooter, retro game"
+  },
+  "privacy": {
+    "seoTitle": "Privacy Policy - Gar-Type",
+    "seoDescription": "Learn about how Gar-Type collects and protects your personal information. Read our privacy policy for detailed information about data usage and protection."
+  },
+  "terms": {
+    "seoTitle": "Terms of Service - Gar-Type",
+    "seoDescription": "Read Gar-Type's terms of service to understand the rules and guidelines for playing our game. Learn about user conduct and intellectual property rights."
+  }
+}

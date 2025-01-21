@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "playGame": "Gioca",
+    "videos": "Video",
+    "about": "Info",
+    "faq": "FAQ",
+    "reviews": "Recensioni"
+  },
+  "game": {
+    "playButton": "Gioca",
+    "fullscreen": "Schermo intero"
+  },
+  "about": {
+    "title": "Info su Gar-Type",
+    "description": "Gar-Type è un gioco di sparatutto gratuito in pixel art sviluppato da Lumpy, ispirato al misterioso personaggio \"Gar\". Questa avventura fantascientifica combina umorismo e azione intensa mentre difendi la Terra dall'invasione del pianeta vivente Gar.",
+    "gameGuide": "Guida al Gioco",
+    "combatTips": "Consigli di Combattimento",
+    "powerUpGuide": "Guida ai Power-up"
+  }
+}
